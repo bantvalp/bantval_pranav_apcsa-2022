@@ -16,10 +16,10 @@ public class AsciiArt
 		System.out.println("What type of ANIMAL YOU WILL DRAW" );
 		System.out.println("\n\n\n\n" );
 
-		System.out.println("                /\\                " );
-		System.out.println("               /  \\               " );
-		System.out.println("              /    \\              " );
-		System.out.println("             [------]             " );
+		System.out.println("              __ ._.  __           " );
+		System.out.println("            / ''=| |='' \\             " );
+		System.out.println("           /.-.-.\\ /.-.-.\\            " );
+		System.out.println("           '     \\/      '           " );
 		//add other output
 
 		System.out.println(" \n\n\n\nHelpFul Hints" );
