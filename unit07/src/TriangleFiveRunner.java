@@ -8,5 +8,9 @@ public class TriangleFiveRunner
 {
    public static void main(String args[])
    {
-	}
+	   TriangleFive tf = new TriangleFive();
+	tf.setAmount(4);
+	tf.setLetter('Z');
+	System.out.println(tf);
+   }
 }
