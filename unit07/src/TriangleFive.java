@@ -34,24 +34,24 @@ public class TriangleFive
 		int tempc = (int) letter;
 		char temp = letter;
 		int amt = amount;
-for(int k=amt; k>0; k--) {
-	if(letter=='Z') {
-		tempc = (int) letter;
-	}
-		for(int i = k; i>0; i--) {
+		String[] arr = new String[amount];
+		for(int i = amt; i>0; i--) {
 			for(int j = 0; j<i; j++) {
-				if((tempc-i+k)> (int) 'Z') {
-					tempc = (int) 'A' -1;
+				if((tempc-i+amt)> (int) 'Z') {
+					tempc = (int) 'A' +(int) letter - (int) 'Z' -1;
 				}
 				
-				temp =  (char)( tempc-i+k);
+				temp =  (char)( tempc-i+amt);
 				
 				trig += temp;
 			}
 			trig+= " ";
-		}
-		trig += "\n";
+			arr[i-1] = trig;	
 }
+		trig = "";
+		for (int i = 0; i < arr.length; i++) {
+			trig=trig+arr[i]+"\n";
+		}
 		return trig;
 	}
 	public String toString()
