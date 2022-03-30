@@ -28,11 +28,11 @@ public class WordSearch
 				if(checkRight(word,i,j)||checkLeft(word,i,j)||checkUp(word,i,j)||checkDown(word,i,j)||
 				checkDiagUpRight(word,i,j)||checkDiagUpLeft(word,i,j)||checkDiagDownRight(word,i,j)||
 				checkDiagDownLeft(word,i,j)) {
-					if(word.equals("THIS")) {
-						System.out.println(""+checkRight(word,i,j)+checkLeft(word,i,j)+checkUp(word,i,j)+checkDown(word,i,j)+
-				checkDiagUpRight(word,i,j)+checkDiagUpLeft(word,i,j)+checkDiagDownRight(word,i,j)+
-				checkDiagDownLeft(word,i,j));
-					}
+//					if(word.equals("THIS")) {
+//						System.out.println(""+checkRight(word,i,j)+checkLeft(word,i,j)+checkUp(word,i,j)+checkDown(word,i,j)+
+//				checkDiagUpRight(word,i,j)+checkDiagUpLeft(word,i,j)+checkDiagDownRight(word,i,j)+
+//				checkDiagDownLeft(word,i,j));
+//					}
 					return true;
 				}
 					}
