@@ -28,11 +28,6 @@ public class WordSearch
 				if(checkRight(word,i,j)||checkLeft(word,i,j)||checkUp(word,i,j)||checkDown(word,i,j)||
 				checkDiagUpRight(word,i,j)||checkDiagUpLeft(word,i,j)||checkDiagDownRight(word,i,j)||
 				checkDiagDownLeft(word,i,j)) {
-//					if(word.equals("THIS")) {
-//						System.out.println(""+checkRight(word,i,j)+checkLeft(word,i,j)+checkUp(word,i,j)+checkDown(word,i,j)+
-//				checkDiagUpRight(word,i,j)+checkDiagUpLeft(word,i,j)+checkDiagDownRight(word,i,j)+
-//				checkDiagDownLeft(word,i,j));
-//					}
 					return true;
 				}
 					}
@@ -50,8 +45,11 @@ public class WordSearch
 				}
 				pos++;
 				c++;
+				if(c>m[r].length-1) {
+					pos--;
+				}
 			}
-			if(pos==w.length()-1) {
+			if(pos==w.length()-1&&w.substring(w.length()-1, w.length()).equals(m[r][c])) {
 			return true;
 			}
 			else {
@@ -70,6 +68,9 @@ public class WordSearch
 			}
 			pos++;
 			c--;
+			if(c<0) {
+				pos--;
+			}
 		}
 		if(pos==w.length()-1) {
 			return true;
@@ -89,6 +90,9 @@ public class WordSearch
 			}
 			pos++;
 			r--;
+			if(r<0) {
+				pos--;
+			}
 		}
 		if(pos==w.length()-1) {
 			return true;
@@ -108,8 +112,12 @@ public class WordSearch
 			}
 			pos++;
 			r++;
+			if(r>m[r].length-1) {
+			pos--;
 		}
-		if(pos==w.length()-1) {
+		}
+		
+		if(pos==w.length()-1&&w.substring(w.length()-1, w.length()).equals(m[r][c])) {
 			return true;
 			}
 			else {
@@ -128,6 +136,9 @@ public class WordSearch
 			pos++;
 			r--;
 			c++;
+			if(r<0||c>m[r].length-1) {
+				pos--;
+			}
 		}
 		if(pos==w.length()-1) {
 			return true;
@@ -148,6 +159,9 @@ public class WordSearch
 			pos++;
 			r--;
 			c--;
+			if(r<0||c<0) {
+				pos--;
+			}
 		}
 		if(pos==w.length()-1) {
 			return true;
@@ -168,6 +182,9 @@ public class WordSearch
 			pos++;
 			r++;
 			c--;
+			if(r>m[r].length-1||c<0) {
+				pos--;
+			}
 		}
 		if(pos==w.length()-1) {
 			return true;
@@ -188,6 +205,9 @@ public class WordSearch
 			pos++;
 			r++;
 			c++;
+			if(r>m[r].length-1||c>m[r].length-1) {
+				pos--;
+			}
 		}
 		if(pos==w.length()-1) {
 			return true;
