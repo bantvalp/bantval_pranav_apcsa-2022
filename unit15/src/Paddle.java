@@ -56,7 +56,7 @@ public class Paddle extends Block
    {
 	   draw(window, Color.white);
 	   setY(getY()-speed);
-	   draw(window, Color.black);
+	   draw(window, Color.orange);
 
    }
 
@@ -64,7 +64,7 @@ public class Paddle extends Block
    {
 	   draw(window, Color.white);
 	   setY(getY()+speed);
-	   draw(window, Color.black);
+	   draw(window, Color.orange);
 
    }
 
