@@ -18,20 +18,20 @@ class BlinkyBall extends Ball
    public BlinkyBall(int x, int y)
    {
 
-
+	   super(x,y);
 
    }
 
    public BlinkyBall(int x, int y, int wid, int ht)
    {
-
+super(x,y,wid,ht);
 
 
    }
 
    public BlinkyBall(int x, int y, int wid, int ht, int xSpd, int ySpd)
    {
-
+super(x,y,wid,ht,xSpd,ySpd);
 
 
    }
@@ -39,6 +39,7 @@ class BlinkyBall extends Ball
    public BlinkyBall(int x, int y, int wid, int ht, Color col, int xSpd, int ySpd)
    {
 
+	   super (x, y, wid, ht, col, xSpd, ySpd);
 
 
 
@@ -46,16 +47,19 @@ class BlinkyBall extends Ball
 
    public Color randomColor()
    {
-   	int r = 0;		//use Math.random()
- 		int g = 0;
- 		int b = 0;
- 		return new Color(r,g,b);
+	   int r = (int) (Math.random() * 256);		
+		int g = (int)(Math.random() * 256);		
+		int b = (int) (Math.random() * 256);		
+		return new Color(r,g,b);
    }
 
    public void moveAndDraw(Graphics window)
    {
 
-
+	   draw(window, Color.white);
+		setX(getX() + getXSpeed());
+		setY(getY()+getYSpeed());
+		draw(window,randomColor());
 
 
    }

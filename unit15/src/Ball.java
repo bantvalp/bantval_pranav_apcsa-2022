@@ -69,7 +69,7 @@ public class Ball extends Block {
 		// setY
 		setY(getY()+ySpeed);
 		// draw the ball at its new location
-		draw(window, Color.blue);
+		draw(window);
 	}
 
 	public boolean equals(Object obj) {
