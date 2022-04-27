@@ -63,7 +63,31 @@ public class PictureTester
     caterpillar.mirrorVertical();
     caterpillar.explore();
   }
-  
+  public static void testMirrorVRTL()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorVRTL();
+    caterpillar.explore();
+  }
+  public static void testMirrorHorizontal() {
+	  Picture pic = new Picture("redMotorcycle.jpg");
+	  pic.explore();
+	  pic.mirrorHorizontal();
+	  pic.explore();
+  }
+  public static void testMirrorHBTT() {
+	  Picture pic = new Picture("redMotorcycle.jpg");
+	  pic.explore();
+	  pic.mirrorHBTT();
+	  pic.explore();
+  }
+  public static void testMirrorDiagonal() {
+	  Picture pic = new Picture("beach.jpg");
+	  pic.explore();
+	  pic.mirrorDiagonal();
+	  pic.explore();
+  }
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
@@ -72,12 +96,23 @@ public class PictureTester
     temple.mirrorTemple();
     temple.explore();
   }
-  
+  public static void testMirrorArms() {
+	  Picture arm = new Picture("snowman.jpg");
+	  arm.explore();
+	  arm.mirrorArms();
+	  arm.explore();
+  }
+  public static void testMirrorGull() {
+	  Picture gull = new Picture("seagull.jpg");
+	  gull.explore();
+	  gull.mirrorGull();
+	  gull.explore();
+  }
   /** Method to test the collage method */
   public static void testCollage()
   {
     Picture canvas = new Picture("640x480.jpg");
-    canvas.createCollage();
+    canvas.myCollage();
     canvas.explore();
   }
   
@@ -88,30 +123,48 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
-  
+  public static void testCopyPart()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.copyPart(new Picture("seagull.jpg"),230,300,200,200,350,350);
+    beach.explore();
+  }
+  public static void testEdgeDetection2()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.explore();
+    Picture swan2 = new Picture("swan.jpg");
+    swan2.edgeDetection2(10);
+    swan2.explore();
+  }
+
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
   {
-    // uncomment a call here to run a test
+    // uncomment a call here to run a test this is
     // and comment out the ones you don't want
     // to run
-    //testZeroBlue();
-    //testKeepOnlyBlue();
-    //testKeepOnlyRed();
-    //testKeepOnlyGreen();
-    //testNegate();
-    //testGrayscale();
-    testFixUnderwater();
-    //testMirrorVertical();
-    //testMirrorTemple();
-    //testMirrorArms();
-    //testMirrorGull();
-    //testMirrorDiagonal();
-    //testCollage();
-    //testCopy();
-    //testEdgeDetection();
-    //testEdgeDetection2();
+    //testZeroBlue();//
+    //testKeepOnlyBlue();//
+    //testKeepOnlyRed();//
+    //testKeepOnlyGreen();//
+    //testNegate();//
+    //testGrayscale();//
+    //testFixUnderwater();//
+    //testMirrorVertical();//
+   // testMirrorVRTL();//
+    //testMirrorHorizontal();//
+	//  testMirrorHBTT();//
+   //testMirrorTemple();//
+    //testMirrorArms();//
+   // testMirrorGull();//
+    //testMirrorDiagonal();//
+    //testCollage();//
+    //testCopyPart();
+    //testEdgeDetection();//
+    testEdgeDetection2();//
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
