@@ -138,6 +138,15 @@ public class PictureTester
     swan2.edgeDetection2(10);
     swan2.explore();
   }
+  public static void testBackgroundSwap()
+  {
+    	Picture mark = new Picture("blue-mark.jpg");
+    	Picture moon = new Picture("moon-surface.jpg");
+    	mark.backgroundSwap(moon);  //replace blue pixels in mark with pixels in moon
+					    //replace pixels containing the logo on the t-shirt
+   	mark.explore();
+  }
+ 
 
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -146,26 +155,28 @@ public class PictureTester
     // uncomment a call here to run a test this is
     // and comment out the ones you don't want
     // to run
-    //testZeroBlue();//
-    //testKeepOnlyBlue();//
-    //testKeepOnlyRed();//
-    //testKeepOnlyGreen();//
-    //testNegate();//
-    //testGrayscale();//
-    //testFixUnderwater();//
-    //testMirrorVertical();//
-   // testMirrorVRTL();//
-    //testMirrorHorizontal();//
-	//  testMirrorHBTT();//
-   //testMirrorTemple();//
-    //testMirrorArms();//
-   // testMirrorGull();//
-    //testMirrorDiagonal();//
-    //testCollage();//
-    //testCopyPart();
-    //testEdgeDetection();//
-    testEdgeDetection2();//
-    //testChromakey();
+//    testZeroBlue();//
+//    testKeepOnlyBlue();//
+//    testKeepOnlyRed();//
+//    testKeepOnlyGreen();//
+//    testNegate();//
+//    testGrayscale();//
+//    testFixUnderwater();//
+//    testMirrorVertical();//
+//    testMirrorVRTL();//
+//    testMirrorHorizontal();//
+//	  testMirrorHBTT();//
+//    testMirrorTemple();//
+//    testMirrorArms();//
+//    testMirrorGull();//
+//    testMirrorDiagonal();//
+//    testCollage();//
+//    testCopyPart();//
+//    testEdgeDetection();//
+//    testEdgeDetection2();//
+   testBackgroundSwap();
+	  
+	 //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
     //testSetRedToHalfValueInTopHalf();

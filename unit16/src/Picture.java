@@ -81,6 +81,26 @@ public class Picture extends SimplePicture {
 	}
 
 	/** Method to set the blue to 0 */
+	public void backgroundSwap(Picture newBackground) {
+		System.out.println("Pranav Bantval\nPeriod 1\nComputer 25\n5-17-2022");
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel[][] backpixel = newBackground.getPixels2D();
+		for(Pixel[] rows : pixels) {
+			for(Pixel pix : rows) {
+				if(pix.getBlue()>pix.getGreen()&&pix.getBlue()>pix.getRed()) {
+					pix.setColor(backpixel[pix.getY()][pix.getX()].getColor());
+				}
+				if(pix.getX()>356 && pix.getY()>357&&pix.getX()<403&&pix.getY()<385) {
+					pix.setBlue(190);
+					pix.setGreen(199);
+					pix.setRed(203);
+				}
+				if(pix.getX()<40||pix.getY()<50) {
+					pix.setColor(backpixel[pix.getY()][pix.getX()].getColor());
+				}
+			}
+		}
+	}
 	public void zeroBlue() {
 		Pixel[][] pixels = this.getPixels2D();
 		for (Pixel[] rowArray : pixels) {
