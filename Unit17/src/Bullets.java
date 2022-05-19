@@ -12,36 +12,59 @@ import java.util.List;
 
 public class Bullets
 {
-	private List<Ammo> ammo;
+	private ArrayList<Ammo> ammo;
 
 	public Bullets()
 	{
+		ammo = new ArrayList<Ammo>();
 	}
 
 	public void add(Ammo al)
 	{
+		ammo.add(al);
 	}
 
 	//post - draw each Ammo
 	public void drawEmAll( Graphics window )
 	{
+		for(Ammo a : ammo) {
+			a.draw(window);
+		}
 	}
 
 	public void moveEmAll()
 	{
+		for(Ammo a : ammo) {
+			a.move("up");
+		}
 	}
 
 	public void cleanEmUp()
 	{
+		if (ammo.size() > 0) {
+			for (int i = 0; i < ammo.size(); i++) {
+				if (!ammo.get(i).isAlive()) {
+					ammo.remove(i);
+					i = 0;
+				}
+			}
+		}
 	}
 
-	public List<Ammo> getList()
+	public ArrayList<Ammo> getList()
 	{
-		return null;
+		return ammo;
 	}
 
 	public String toString()
 	{
 		return "";
+	}
+	public Ammo getAmmo(int index) {
+		return ammo.get(index);
+	}
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return ammo.size();
 	}
 }

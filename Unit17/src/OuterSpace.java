@@ -19,12 +19,13 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Ship ship;
 	private Alien alienOne;
 	private Alien alienTwo;
-
+private boolean al = true;
 	/* uncomment once you are ready for this part
-	 *
-   private AlienHorde horde;
-	private Bullets shots;
-	*/
+	 **/
+   private AlienHorde horde= new AlienHorde(11);
+	
+	private Bullets shots = new Bullets();
+	
 
 	private boolean[] keys;
 	private BufferedImage back;
@@ -37,9 +38,9 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		//instantiate other instance variables
 		//Ship, Alien
-		 ship = new Ship(400,400,80,80,4);
-		 alienOne = new Alien(300,200,40,40,2);
-		 alienTwo = new Alien(500,200,40,40,2);
+		 ship = new Ship(400,400,80,80,3);
+//		 alienOne = new Alien(300,200,40,40,1);
+//		 alienTwo = new Alien(500,200,40,40,1);
 		this.addKeyListener(this);
 		new Thread(this).start();
 
@@ -47,7 +48,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	}
 
    public void update(Graphics window)
-   {
+   {	if(al) {
+	   horde.generateHorde(115, 35, 40, 40, 1);
+	   al=false;
+   }
 	   paint(window);
    }
 
@@ -88,21 +92,31 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		}
 		if(keys[4] == true)
 		{
-			Ammo shot = new Ammo(ship.getX()+(ship.getWidth()/2), ship.getY(), 5);
-			shot.draw(twoDGraph);
-			shot.move("UP");
+			shots.add(new Ammo(ship.getX()+(ship.getWidth()/2), ship.getY(), 5));
+			keys[4]=false;
+			
 		}
 		//add code to move Ship, Alien, etc.
-
+		for(Ammo a : shots.getList()) {
+			for(Alien al : horde.getList()) {
+				if(a.didCollide(al)) {
+					a.dead();
+					al.dead();
+				}
+			}
+		}
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
-
-
 		twoDGraph.drawImage(back, null, 0, 0);
 		ship.draw(twoDGraph);
-		alienOne.draw(twoDGraph);
-		alienTwo.draw(twoDGraph);
-		alienOne.move("down");
+
+		shots.drawEmAll(twoDGraph);
+		horde.drawEmAll(twoDGraph);
+		shots.moveEmAll();
+		shots.cleanEmUp();
+		horde.moveEmAll();
+		horde.removeDeadOnes(shots);
+	
 	}
 
 

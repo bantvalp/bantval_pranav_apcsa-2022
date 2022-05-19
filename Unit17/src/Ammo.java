@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 public class Ammo extends MovingThing
 {
 	private int speed;
-
+	private boolean alive = true;
 	public Ammo()
 	{
 		this(0,0,0);
@@ -70,7 +70,22 @@ public class Ammo extends MovingThing
 
 		}
 	}
-
+	public boolean isAlive() {
+		if(getY()<0) {
+			alive = false;
+		}
+		return alive;
+	}
+	public boolean didCollide(Alien al) {
+		if(getX()+5>=al.getX()&&getX()<=al.getX() + al.getWidth() && getY() <=al.getY()+al.getHeight() && getY()-5>=al.getY()) {
+			alive = false;
+			return true;
+		}
+		return false;
+	}
+	public void dead() {
+		alive=false;
+	}
 	public String toString()
 	{
 		return "";

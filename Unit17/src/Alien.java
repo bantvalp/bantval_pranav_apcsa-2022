@@ -13,7 +13,9 @@ public class Alien extends MovingThing
 {
 	private int speed;
 	private Image image;
-
+	private boolean alive = true;
+	private boolean right = true;
+	private boolean left = false;
 	public Alien()
 	{
 		this(0,0,30,30,0);
@@ -88,7 +90,22 @@ public class Alien extends MovingThing
 	{
 	   return speed;
 	}
-
+public String getDirection() {
+	if(right) {
+		return "RIGHT";
+	}
+	return "LEFT";
+}
+public void setDirection(String s) {
+	if(s.equals("RIGHT")) {
+		right=true;
+		left=false;
+	}
+	else {
+		left = true;
+		right=false;
+	}
+}
    public void move(String direction)
 	{
 	   //add code here
@@ -114,7 +131,12 @@ public class Alien extends MovingThing
 	{
    	window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
 	}
-
+	public boolean isAlive() {
+		return alive;
+	}
+	public void dead() {
+		alive = false;
+	}
 	public String toString()
 	{
 		return "";
