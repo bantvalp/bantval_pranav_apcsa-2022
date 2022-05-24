@@ -146,8 +146,24 @@ public class PictureTester
 					    //replace pixels containing the logo on the t-shirt
    	mark.explore();
   }
- 
-
+ public static void testEncodeDecode() {
+	 Picture beach = new Picture("beach.jpg");
+	 beach.explore();
+	 Picture message = new Picture("apple_icon.jpg");
+	 //Picture message = new Picture("msg.jpg");
+	 beach.encode(message);
+	 beach.explore();
+	 beach.decode().explore();
+ }
+ public static void testCreateEncodeDecode() {
+	 Picture beach = new Picture("beach.jpg");
+	 beach.explore();
+	 Picture message = new Picture("apple_icon.jpg");
+	 //Picture message = new Picture("msg.jpg");
+	 beach.createEncode(message);
+	 beach.explore();
+	 beach.createDecode().explore();
+ }
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -174,7 +190,9 @@ public class PictureTester
 //    testCopyPart();//
 //    testEdgeDetection();//
 //    testEdgeDetection2();//
-   testBackgroundSwap();
+   //testBackgroundSwap();
+	  testCreateEncodeDecode();
+	  
 	  
 	 //testChromakey();
     //testEncodeAndDecode();

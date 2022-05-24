@@ -79,28 +79,148 @@ public class Picture extends SimplePicture {
 		return output;
 
 	}
+	public void createEncode(Picture message) {
+		Pixel[][] messagePixels = message.getPixels2D();
+		Pixel[][] currPixels = this.getPixels2D();
+		Pixel currPixel = null;
+		Pixel messagePixel = null;
+	
+		for (int row = 0; row < this.getHeight(); row++) {
+			for (int col = 0; col < this.getWidth(); col++) {
+				currPixel = currPixels[row][col];
+				messagePixel = messagePixels[row][col];
+				int r = (currPixel.getRed()%100)%10;
+				int b = (currPixel.getBlue()%100)%10;
+				int sq = r*b;
+				if (messagePixel.colorDistance(Color.BLACK) < 50) {
+					if(Math.sqrt(sq)%1==0) {
+						
+					}
+					else {
+						
+						int redRound = currPixel.getRed()/10;
+						redRound=redRound*10; 
+						if(redRound==250&&b>5) {
+							redRound=240+b;
+						}
+						else {
+							redRound+=b;
+						}
+						currPixel.setRed(redRound);
+					}
+				}
+				else {
+				
+					if(currPixel.getRed()<255) {
+						currPixel.setRed(currPixel.getRed()+1);
+					}
+					else if(currPixel.getBlue()<255) {
+						currPixel.setBlue(currPixel.getBlue()+1);
+					}
+					else {
+						while(Math.sqrt(sq)%1==0) {
+							currPixel.setRed(currPixel.getRed()-1);
+							 r = (currPixel.getRed()%100)%10;
+							 b = (currPixel.getBlue()%100)%10;
+							 sq = r*b;
+						}
+					}
+				
+				
+				}
+			}
+		}
+	}
+	public Picture createDecode() {
+		Pixel[][] pixels = this.getPixels2D();
+		int height = this.getHeight();
+		int width = this.getWidth();
+		Pixel currPixel = null;
+
+		Pixel messagePixel = null;
+		Picture messagePicture = new Picture(height, width);
+		Pixel[][] messagePixels = messagePicture.getPixels2D();
+		for (int row = 0; row < this.getHeight(); row++) {
+			for (int col = 0; col < this.getWidth(); col++) {
+				currPixel = pixels[row][col];
+				messagePixel = messagePixels[row][col];
+				int r = (currPixel.getRed()%100)%10;
+				int b = (currPixel.getBlue()%100)%10;
+				if (Math.sqrt(r*b)%1==0) {
+					messagePixel.setColor(Color.BLACK);
+				}
+			}
+		}
+		return messagePicture;
+	}
+	public void encode(Picture messagePict) {
+		Pixel[][] messagePixels = messagePict.getPixels2D();
+		Pixel[][] currPixels = this.getPixels2D();
+		Pixel currPixel = null;
+		Pixel messagePixel = null;
+		int count = 0;
+		for (int row = 0; row < this.getHeight(); row++) {
+			for (int col = 0; col < this.getWidth(); col++) {
+				// if the current pixel red is odd make it even
+				currPixel = currPixels[row][col];
+				if (currPixel.getRed() % 2 == 1)
+					currPixel.setRed(currPixel.getRed() - 1);
+				messagePixel = messagePixels[row][col];
+				if (messagePixel.colorDistance(Color.BLACK) < 50) {
+					currPixel.setRed(currPixel.getRed() + 1);
+					count++;
+				}
+			}
+		}
+		System.out.println(count);
+	}
+
+	public Picture decode() {
+		Pixel[][] pixels = this.getPixels2D();
+		int height = this.getHeight();
+		int width = this.getWidth();
+		Pixel currPixel = null;
+
+		Pixel messagePixel = null;
+		Picture messagePicture = new Picture(height, width);
+		Pixel[][] messagePixels = messagePicture.getPixels2D();
+		int count = 0;
+		for (int row = 0; row < this.getHeight(); row++) {
+			for (int col = 0; col < this.getWidth(); col++) {
+				currPixel = pixels[row][col];
+				messagePixel = messagePixels[row][col];
+				if (currPixel.getRed() % 2 == 1) {
+					messagePixel.setColor(Color.BLACK);
+					count++;
+				}
+			}
+		}
+		System.out.println(count);
+		return messagePicture;
+	}
 
 	/** Method to set the blue to 0 */
 	public void backgroundSwap(Picture newBackground) {
 		System.out.println("Pranav Bantval\nPeriod 1\nComputer 25\n5-17-2022");
 		Pixel[][] pixels = this.getPixels2D();
 		Pixel[][] backpixel = newBackground.getPixels2D();
-		for(Pixel[] rows : pixels) {
-			for(Pixel pix : rows) {
-				if(pix.getBlue()>pix.getGreen()&&pix.getBlue()>pix.getRed()) {
+		for (Pixel[] rows : pixels) {
+			for (Pixel pix : rows) {
+				if (pix.getBlue() > pix.getGreen() && pix.getBlue() > pix.getRed()) {
 					pix.setColor(backpixel[pix.getY()][pix.getX()].getColor());
 				}
-				if(pix.getX()>356 && pix.getY()>357&&pix.getX()<403&&pix.getY()<385) {
+				if (pix.getX() > 356 && pix.getY() > 357 && pix.getX() < 403 && pix.getY() < 385) {
 					pix.setBlue(190);
 					pix.setGreen(199);
 					pix.setRed(203);
 				}
-				if(pix.getX()<40||pix.getY()<50) {
+				if (pix.getX() < 40 || pix.getY() < 50) {
 					pix.setColor(backpixel[pix.getY()][pix.getX()].getColor());
 				}
 			}
 		}
 	}
+
 	public void zeroBlue() {
 		Pixel[][] pixels = this.getPixels2D();
 		for (Pixel[] rowArray : pixels) {
