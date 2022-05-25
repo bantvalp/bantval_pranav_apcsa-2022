@@ -92,7 +92,7 @@ public class Picture extends SimplePicture {
 				int r = (currPixel.getRed()%100)%10;
 				int b = (currPixel.getBlue()%100)%10;
 				int sq = r*b;
-				if (messagePixel.colorDistance(Color.BLACK) < 50) {
+				if (messagePixel.colorDistance(Color.BLACK) < 200) {
 					if(Math.sqrt(sq)%1==0) {
 						
 					}
@@ -110,23 +110,14 @@ public class Picture extends SimplePicture {
 					}
 				}
 				else {
-				
-					if(currPixel.getRed()<255) {
-						currPixel.setRed(currPixel.getRed()+1);
-					}
-					else if(currPixel.getBlue()<255) {
-						currPixel.setBlue(currPixel.getBlue()+1);
-					}
-					else {
-						while(Math.sqrt(sq)%1==0) {
-							currPixel.setRed(currPixel.getRed()-1);
-							 r = (currPixel.getRed()%100)%10;
-							 b = (currPixel.getBlue()%100)%10;
-							 sq = r*b;
-						}
-					}
-				
-				
+
+					
+						int redRound = currPixel.getRed()/10;
+						int blueRound = currPixel.getBlue()/10;
+						redRound=redRound*10; blueRound=blueRound*10;
+						currPixel.setRed(redRound+4);
+						currPixel.setBlue(blueRound+5);
+					
 				}
 			}
 		}

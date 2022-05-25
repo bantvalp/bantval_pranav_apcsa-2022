@@ -149,8 +149,8 @@ public class PictureTester
  public static void testEncodeDecode() {
 	 Picture beach = new Picture("beach.jpg");
 	 beach.explore();
-	 Picture message = new Picture("apple_icon.jpg");
-	 //Picture message = new Picture("msg.jpg");
+	 //Picture message = new Picture("apple_icon.jpg");
+	 Picture message = new Picture("msg.jpg");
 	 beach.encode(message);
 	 beach.explore();
 	 beach.decode().explore();
@@ -159,7 +159,7 @@ public class PictureTester
 	 Picture beach = new Picture("beach.jpg");
 	 beach.explore();
 	 Picture message = new Picture("apple_icon.jpg");
-	 //Picture message = new Picture("msg.jpg");
+	// Picture message = new Picture("msg.jpg");
 	 beach.createEncode(message);
 	 beach.explore();
 	 beach.createDecode().explore();
@@ -191,6 +191,7 @@ public class PictureTester
 //    testEdgeDetection();//
 //    testEdgeDetection2();//
    //testBackgroundSwap();
+	 // testEncodeDecode();
 	  testCreateEncodeDecode();
 	  
 	  
