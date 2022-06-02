@@ -43,23 +43,29 @@ public class Perceptron {
 				for(int k = 0; k<weights.length; k++) {
 					weights[k] += learningRate*error*trainInputs[j][k];
 				}
-				bias = learningRate*error;
+				bias += learningRate*error;
 				System.out.println("Updated weight:"+ Arrays.toString(weights));
 				System.out.println("Updated bias: "+ bias);
 			}
 		}
 	}
 	public static void main(String[] args) {
-		//truth table
+		//truth table and
 		int[] labels= {1,0,0,0};
-		
-		
-		
+		//or
+		//int[] labels= {1,1,1,0};
+		//nand
+		//int[] labels= {0,1,1,1};
+		// xor
+		//int[] labels= {0,1,1,0};
 		double[][] input = {{1.0,1.0},{1.0, 0.0}, {0.0, 1.0}, {0.0,0.0}};
 		Perceptron p = new Perceptron(10, 2, 1);
 		p.train(input, labels);
-		//test
-		double[] testMat = {1,1};
+		//tests
+		//double[] testMat = {1,1};
+		//double[] testMat = {1,0};
+		//double[] testMat = {0,1};
+		double[] testMat = {0,0};
 		System.out.println("INPUTS: " + Arrays.toString(testMat));
 		int output = p.predict(testMat);
 		System.out.println("OUTPUT: " + output);
